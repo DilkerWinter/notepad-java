@@ -13,7 +13,8 @@ public class MenuBar extends JMenuBar {
         novoDiario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK));
         novoDiario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                newDiario = new Diario();
+                //Arrumar para criar nova classe de JtextArea para criar notas e salvar
+                newDiario = new Diario(); 
             }
         });
 
@@ -24,6 +25,7 @@ public class MenuBar extends JMenuBar {
         abrirDiario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_MASK));
         abrirDiario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                //Adicionar para abrir uma classe de Diario Existente previamente
                 System.out.println("ABRIU");
 
             }
@@ -36,6 +38,7 @@ public class MenuBar extends JMenuBar {
         salvarDiario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK));
         salvarDiario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // Adicionar classe para fazer salvamento das notas como um objeto/String ou arquivo txt.
                 System.out.println("SALVO");
 
             }
