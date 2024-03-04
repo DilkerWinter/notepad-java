@@ -21,6 +21,10 @@ public class Main {
         JMenuBar menuBar = new MenuBar(); // Usando a classe MenuBar
         telainicio.setJMenuBar(menuBar);
 
+        //Adicionar tela de Text utilizando a classe de Diario.
+
+        //Adicionar botão para customização de texto.
+
         telainicio.revalidate();
         telainicio.repaint();
     }
