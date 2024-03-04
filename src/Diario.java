@@ -5,10 +5,10 @@ public class Diario {
 
     public Diario() {
         diarioText = new JTextArea();
-        diarioText.setEditable(true); // Set the text area editable
-        diarioText.setLineWrap(true); // Enable line wrapping
-        diarioText.setWrapStyleWord(true); // Wrap at word boundaries
-        diarioText.setPreferredSize(new java.awt.Dimension(500, 500)); // Set preferred size
+        diarioText.setEditable(true);
+        diarioText.setLineWrap(true); 
+        diarioText.setWrapStyleWord(true);
+        diarioText.setPreferredSize(new java.awt.Dimension(500, 500)); 
         diarioText.setVisible(true);
     }
 
