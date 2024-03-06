@@ -1,9 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.PrimitiveIterator;
+import javax.swing.JTextArea;
+
 
 public class MenuBar extends JMenuBar {
-    public MenuBar() {
+    public MenuBar(JFrame telainicio) {
         JMenu menu = new JMenu("Menu");
 
         JMenuItem novoDiario = new JMenuItem("Novo Diário");
@@ -14,7 +21,8 @@ public class MenuBar extends JMenuBar {
         novoDiario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //Arrumar para criar nova classe de JtextArea para criar notas e salvar
-                newDiario = new Diario(); 
+                System.out.println("NOVO");
+
             }
         });
 
@@ -27,8 +35,39 @@ public class MenuBar extends JMenuBar {
             public void actionPerformed(ActionEvent e) {
                 //Adicionar para abrir uma classe de Diario Existente previamente
                 System.out.println("ABRIU");
+                File arquivo;
+                JFileChooser abrirArquivo = new JFileChooser();
+                int returnVal = abrirArquivo.showOpenDialog(null);
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    arquivo = abrirArquivo.getSelectedFile();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Não foi selecionado um Diario");
+                    return; // Exit method if no file selected
+                }
+                try {
+                    if (!arquivo.exists()) {
+                        arquivo.createNewFile();
+                    }
+                    FileReader leitor = new FileReader(arquivo);
+                    StringBuilder printarquivo = new StringBuilder();
+                    int c;
+                    while ((c = leitor.read()) != -1) {
+                        printarquivo.append((char) c);
+                    }
+                    leitor.close();
+                    System.out.println(printarquivo.toString());
+                    JTextArea telaAberta = new JTextArea();
+                    telaAberta.setSize(50, 50);
+                    telaAberta.setText(printarquivo.toString());
+                    JScrollPane scroll = new JScrollPane(telaAberta);
 
+                    telainicio.add(scroll, BorderLayout.CENTER);
+                    telainicio.setVisible(true);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
+
         });
 
         JMenuItem salvarDiario = new JMenuItem("Salvar Diário");

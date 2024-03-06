@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.JTextArea;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,14 +12,14 @@ public class Main {
         telainicio.setLocationRelativeTo(null);
         telainicio.setResizable(true);
         telainicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        telainicio.setLayout(new BorderLayout());
 
         // Definindo imagem de ícone para o app
         ImageIcon icon = new ImageIcon("src/img/2232688.png");
         telainicio.setIconImage(icon.getImage());
 
         // Adicionando barra de menu
-        JMenuBar menuBar = new MenuBar(); // Usando a classe MenuBar
+        JMenuBar menuBar = new MenuBar(telainicio); // Usando a classe MenuBar
         telainicio.setJMenuBar(menuBar);
 
         //Adicionar tela de Text utilizando a classe de Diario.
