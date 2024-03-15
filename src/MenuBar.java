@@ -20,9 +20,12 @@ public class MenuBar extends JMenuBar {
         novoDiario.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK));
         novoDiario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //Arrumar para criar nova classe de JtextArea para criar notas e salvar
-                System.out.println("NOVO");
-
+            JTextArea novoArquivo = new JTextArea();
+            novoArquivo.setSize(50, 50);
+            JScrollPane scrollnovo = new JScrollPane(novoArquivo);
+            telainicio.add(scrollnovo, BorderLayout.CENTER);
+            telainicio.revalidate();
+            telainicio.repaint();
             }
         });
 
@@ -42,7 +45,7 @@ public class MenuBar extends JMenuBar {
                     arquivo = abrirArquivo.getSelectedFile();
                 } else {
                     JOptionPane.showMessageDialog(null, "Não foi selecionado um Diario");
-                    return; // Exit method if no file selected
+                    return;
                 }
                 try {
                     if (!arquivo.exists()) {
@@ -55,14 +58,14 @@ public class MenuBar extends JMenuBar {
                         printarquivo.append((char) c);
                     }
                     leitor.close();
-                    System.out.println(printarquivo.toString());
                     JTextArea telaAberta = new JTextArea();
                     telaAberta.setSize(50, 50);
                     telaAberta.setText(printarquivo.toString());
-                    JScrollPane scroll = new JScrollPane(telaAberta);
+                    JScrollPane scrollabrir = new JScrollPane(telaAberta);
 
-                    telainicio.add(scroll, BorderLayout.CENTER);
-                    telainicio.setVisible(true);
+                    telainicio.add(scrollabrir, BorderLayout.CENTER);
+                    telainicio.revalidate();
+                    telainicio.repaint();
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -79,7 +82,6 @@ public class MenuBar extends JMenuBar {
             public void actionPerformed(ActionEvent e) {
                 // Adicionar classe para fazer salvamento das notas como um objeto/String ou arquivo txt.
                 System.out.println("SALVO");
-
             }
         });
 
