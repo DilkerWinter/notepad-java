@@ -4,27 +4,23 @@ import javax.swing.JTextArea;
 
 public class Main {
     public static void main(String[] args) {
-        // Iniciando o app
+        //Criando tela inicial onde sera exibido o menu e o texto
         JFrame telainicio = new JFrame();
-        telainicio.setTitle("Diário");
-        telainicio.setSize(600, 700);
-        telainicio.setVisible(true);
-        telainicio.setLocationRelativeTo(null);
-        telainicio.setResizable(true);
-        telainicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        telainicio.setLayout(new BorderLayout());
+        telainicio.setTitle("Diário");      //nome da tela
+        telainicio.setSize(600, 700);       //tamanho da tela
+        telainicio.setVisible(true);    //Adicionando para tela aparecer
+        telainicio.setLocationRelativeTo(null); // centralizando a tela
+        telainicio.setResizable(true);  //adicionando para poder modificiar o tamanho da tela
+        telainicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //programa desligar ao fechar tela
+        telainicio.setLayout(new BorderLayout()); //adicionando layout de bordar
+        ImageIcon icon = new ImageIcon("src/img/2232688.png"); //adicionando imagem de icone
+        telainicio.setIconImage(icon.getImage());   //adionando icone ao programa
 
-        // Definindo imagem de ícone para o app
-        ImageIcon icon = new ImageIcon("src/img/2232688.png");
-        telainicio.setIconImage(icon.getImage());
 
-        // Adicionando barra de menu
-        JMenuBar menuBar = new MenuBar(telainicio); // Usando a classe MenuBar
+        JMenuBar menuBar = new MenuBar(telainicio); //criando menubar
         telainicio.setJMenuBar(menuBar);
 
-        //Adicionar botão para customização de texto.
-
-        telainicio.revalidate();
+        telainicio.revalidate();  //renderizando os componentes
         telainicio.repaint();
     }
 }
